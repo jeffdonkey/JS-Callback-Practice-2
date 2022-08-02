@@ -3,11 +3,10 @@ function move(element) {
     function moveToCoordinates(left, bottom) {
         element.style.left = left + 'px'
         element.style.bottom = bottom + 'px'
-        console.log(`moveToCoordinates says left = ${left}`)
     }
 
-    function moveWithArrowKeys(left, bottom) {
-        console.log(`moveWithArrowKeys says left = ${left}`)
+    function moveWithArrowKeys(left, bottom, callback) {
+
         let direction = null;
         let x = left;
         let y = bottom;
@@ -28,6 +27,8 @@ function move(element) {
             if (direction === 'south') {
                 y -= 1
             }
+            
+            
             element.style.left = x + 'px'
             element.style.bottom = y + 'px'
 
@@ -50,10 +51,14 @@ function move(element) {
             if (e.key === 'ArrowDown') {
                 direction = 'south'
             }
+            // Task 5 adds line below
+            callback(direction)
         })
 
         document.addEventListener('keyup', function (e) {
             direction = null
+            // Task 5 adds line below
+            callback(direction)
         })
     }
 
