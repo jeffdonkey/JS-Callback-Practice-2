@@ -35,6 +35,12 @@ function moveCharacter(){
     that is within function move */
     character.style.left = x + 'px'
     character.style.bottom = y + 'px'
+/* line below was added to invoke function move.
+without this line the x and y values would change
+in the html file but the graphic would not show movement.
+I did not come up with this on my own.  I got help from
+the spouse. */
+    move(character)
 }
 
 /*setInterval is a pre-set JavaScript function.
@@ -44,7 +50,7 @@ of milliseconds to run before re-invoking */
 setInterval(moveCharacter, 1)
 
 /* below is an alternate function where the 
-in statements that would change the character's position
+if statements that would change the character's position
 are inbedded within the function setInterval.
 Activity directions expressed that it is our choice on which
 function to use. 
@@ -79,7 +85,7 @@ move(newItem('assets/staff.png')).to(600, 250)
 
 document.addEventListener('keydown', function(e){
     if(e.repeat) return;
-
+    
     if(e.key === 'ArrowLeft'){
         direction = 'west'
     }
